@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run -e CI=true singhankitin/frontend npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: docker-react
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-479704546918Info"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_KEY
+
