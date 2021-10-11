@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,4 +7,4 @@ before_install:
   - docker build -t singhankitin/frontend -f Dockerfile.dev .
 
 script:
-  - docker run singhankitin/frontend npm run test -- --coverage
+  - docker run -e CI=true singhankitin/frontend npm run test -- --coverage
